@@ -1,6 +1,6 @@
 #include "main.h"
 
-int loopStack(int size)
+int loopInts(int size)
 {
 	int xs[size];
 	for (int i = 0; i < size; i++)
@@ -11,7 +11,7 @@ int loopStack(int size)
 	return size;
 }
 
-int loopHeap(int size)
+int loopObjects(int size)
 {
 	vector<int> xs;
 	for (int i = 0; i < size; i++)
@@ -61,7 +61,7 @@ IntHolder::IntHolder(int x)
 	_x = x;
 }
 
-int loopHeap2(int size)
+int loopObjectsWithReferences(int size)
 {
 	vector<IntHolder> xs;
 	for (int i = 0; i < size; i++)
@@ -76,21 +76,27 @@ int loopHeap2(int size)
 
 int main()
 {
-	cout << "*** loopStack(5)\n";
-	int xs1 = loopStack(5);
+	/*
+	Stack operations below
+	*/
+	cout << "*** loopInts(5)\n";
+	int xs1 = loopInts(5);
 
 	cout << "\n";
-	cout << "*** loopHeap(5)\n";
-	int xs2 = loopHeap(5);
+	cout << "*** loopObjects(5)\n";
+	int xs2 = loopObjects(5);
 
 	cout << "\n";
-	cout << "*** loopHeap2(5)\n";
-	int xs3 = loopHeap2(5);
+	cout << "*** loopObjectsWithReferences(5)\n";
+	int xs3 = loopObjectsWithReferences(5);
 
 	IntHolder x = IntHolder(123);
 	cout << "\n";
 	cout << "x.get_x(): " << x.get_x() << "\n";
 
+	/*
+	Heap operations below
+	*/
 	IntHolder *xp = new IntHolder(345);
 	cout << "\n";
 	cout << "xp->get_x(): " << xp->get_x() << "\n";
